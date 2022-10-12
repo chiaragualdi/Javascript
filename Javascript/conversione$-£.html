@@ -1,20 +1,20 @@
 <html>
     <head>
         <script>
-            function $Euro(){
-                const CONVERSIONE = 0.93;
+            function DollaroEuro(){
+                const Conversione=1.03;
                 var importoDollaro;
-                var importoEuro;
-                importoDollaro = document.getElementById("txtDollari").value;
-                importoEuro = importoDollaro*CONVERSIONE;
+                importoDollaro = Number(document.getElementById("txtDollari").value);
+                var importoEuro=Conversione*importoDollaro;
+                alert(importoEuro);
                 document.getElementById("txtEuro").value = importoEuro;
             }
-            function Euro$(){
-                const CONVERSIONE = 1.08;
+            function EuroDollaro(){
+                const Conversione = 1.03;
                 var importoDollaro;
                 var importoEuro;
                 importoEuro = document.getElementById("txtEuro").value;
-                importoDollaro = importoEuro/CONVERSIONE;
+                importoDollaro = importoEuro/Conversione;
                 document.getElementById("txtDollari").value = importoDollaro;
             }
         </script>
@@ -24,8 +24,8 @@
         Dollari($):<input type="number" id="txtDollari"/>
         Euro(€):<input type="number" id="txtEuro"/>
         <br/><br/>
-        <input type="button" value="Da dollari($) a euro(€)" onclick="$Euro()"/>
-        <input type="button" value="Da euro(€) a dollari($)" onclick="Euro$()"/>
+        <input type="button" value="Da dollari($) a euro(€)" onclick="DollaroEuro();"/>
+        <input type="button" value="Da euro(€) a dollari($)" onclick="EuroDollaro();"/>
         </fieldset>
     </body>
 </html>
