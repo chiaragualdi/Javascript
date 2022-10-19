@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            function LanciaMoneta(){
+                var num = Math.trunc(2*Math.random());
+                document.getElementById("risultato").value=num;
+            }
+            function Lancia(){
+                var result = Math.random()
+                document.getElementById("txtRisultato").value=result;
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="LANCIA MONETA" onclick="LanciaMoneta();"/>
+        <br/><br/>
+        <input type="text" id="risultato"/>
+        <br/><br/>
+        <input type="button" value="LANCIA" onclick="Lancia();"/>
+        <br/><br/>
+        <input type="text" id="txtRisultato"/>
+    </body>
+</html>
