@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <style>
+            img{height:55%;width:60%}
+            body{text-align:center}
+        </style>
+        <script>
+            function cambiaImg1(){
+                var nuovaImg="whitecastle.jpg";
+                document.getElementById("titolo").innerHTML="White Castle";
+                document.getElementById("immagine").src=nuovaImg;
+            }
+            function cambiaImg2(){
+                var nuovaImg="oldcastle.jpg";
+                document.getElementById("titolo").innerHTML="Ballycarbery Castle";
+                document.getElementById("immagine").src=nuovaImg;
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="titolo">Ballycarbery Castle</h1>
+        <img src="oldcastle.jpg" id="immagine" onmouseover="cambiaImg1();" onmouseout="cambiaImg2();"/>
+    </body>
+</html>
