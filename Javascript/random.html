@@ -9,15 +9,52 @@
                 var result = Math.random()
                 document.getElementById("txtRisultato").value=result;
             }
+            function LanciaDadi(){
+                //dichiarazione costanti
+                const MAX=6, LANCI=1000;
+                //dichiarazione array conta uscite
+                var uscite= new Array();
+                //inizializzare tutti i valori dell'array uscite a 0
+                for (var i=0; i<MAX; i++)
+                    uscite[i]=0;
+                //ciclo for che estragga 1000 volte
+                for (var i=0; i<LANCI;i++)
+                    var num=Math.trunc(MAX*Math.random())+1;
+                    //se esce 1, incrementiamo l'elemento dell'array di indice 0
+                    if (num==1)
+                        uscite[num-1]++;
+                    else (num==2)
+                        uscite[num-1]++;
+                    else (num==3)
+                        uscite[num-1]++;
+                    else (num==4)
+                        uscite[num-1]++;
+                    else (num==5)
+                        uscite[num-1]++;
+                    else (num==6)
+                        uscite[num-1]++;
+                //assegnare alle caselle di testo numeriche il numero di uscite
+            }
         </script>
     </head>
     <body>
-        <input type="button" value="LANCIA MONETA" onclick="LanciaMoneta();"/>
+        <input type="button" value="LANCIA MONETA" onclick="LanciaMoneta();"/> (risultato=0 o 1)
         <br/><br/>
         <input type="text" id="risultato"/>
         <br/><br/>
-        <input type="button" value="LANCIA" onclick="Lancia();"/>
+        <input type="button" value="LANCIA" onclick="Lancia();"/> risultato(tra 0 e 1)
         <br/><br/>
         <input type="text" id="txtRisultato"/>
+
+        <br/><br/>
+        <input type="button" value="LANCIA DADI"/><br/>Conteggio di quante volte escono i vari numeri con 1000 lanci:<br/> 
+        <fieldset>
+            numero di uscite 1 <input type="number" id="txtUscita1"/><br/>
+            numero di uscite 2 <input type="number" id="txtUscita2"/><br/>
+            numero di uscite 3 <input type="number" id="txtUscita3"/><br/>
+            numero di uscite 4 <input type="number" id="txtUscita4"/><br/>
+            numero di uscite 5 <input type="number" id="txtUscita5"/><br/>
+            numero di uscite 6 <input type="number" id="txtUscita6"/>
+        </fieldset>
     </body>
 </html>
