@@ -11,7 +11,10 @@
             }
             function LanciaDadi(){
                 //dichiarazione costanti
-                const MAX=6, LANCI=1000;
+                const MAX=6;
+                var LANCI=document.getElementById("nLANCI").value;
+                //oppure var LANCI=prompt("Quanti lanci?");
+
                 //dichiarazione array conta uscite
                 var uscite= new Array();
                 //inizializzare tutti i valori dell'array uscite a 0
@@ -42,10 +45,20 @@
                 document.getElementById("txtUscita4").value=uscite[3];
                 document.getElementById("txtUscita5").value=uscite[4];
                 document.getElementById("txtUscita6").value=uscite[5];
+
+                document.getElementById("Percentuale1").value=uscite[0]/LANCI*100;
+                document.getElementById("Percentuale2").value=uscite[1]/LANCI*100;
+                document.getElementById("Percentuale3").value=uscite[2]/LANCI*100;
+                document.getElementById("Percentuale4").value=uscite[3]/LANCI*100;
+                document.getElementById("Percentuale5").value=uscite[4]/LANCI*100;
+                document.getElementById("Percentuale6").value=uscite[5]/LANCI*100;
+            }
+            function Benvenuto(){
+                alert("Benvenuto nella pagina di simulazione di lanci RANDOM!");
             }
         </script>
     </head>
-    <body>
+    <body onload="Benvenuto();">
         <input type="button" value="LANCIA MONETA" onclick="LanciaMoneta();"/> (risultato=0 o 1)
         <br/><br/>
         <input type="text" id="risultato"/>
@@ -56,13 +69,26 @@
 
         <br/><br/>
         <input type="button" value="LANCIA DADI" onclick="LanciaDadi();"/><br/>Conteggio di quante volte escono i vari numeri con 1000 lanci:<br/> 
+        <br/>Quanti lanci vuoi effettuare? <input type="number" id="nLANCI"/>
+        <br/><br/>
         <fieldset>
-            numero di uscite 1 <input type="number" id="txtUscita1"/><br/>
-            numero di uscite 2 <input type="number" id="txtUscita2"/><br/>
-            numero di uscite 3 <input type="number" id="txtUscita3"/><br/>
-            numero di uscite 4 <input type="number" id="txtUscita4"/><br/>
-            numero di uscite 5 <input type="number" id="txtUscita5"/><br/>
+            numero di uscite 1 <input type="number" id="txtUscita1"/>
+            percentuale <input type="number" id="Percentuale1"/><br/>
+
+            numero di uscite 2 <input type="number" id="txtUscita2"/>
+            percentuale <input type="number" id="Percentuale2"/><br/>
+
+            numero di uscite 3 <input type="number" id="txtUscita3"/>
+            percentuale <input type="number" id="Percentuale3"/><br/>
+
+            numero di uscite 4 <input type="number" id="txtUscita4"/>
+            percentuale <input type="number" id="Percentuale4"/><br/>
+
+            numero di uscite 5 <input type="number" id="txtUscita5"/>
+            percentuale <input type="number" id="Percentuale5"/><br/>
+
             numero di uscite 6 <input type="number" id="txtUscita6"/>
+            percentuale <input type="number" id="Percentuale6"/>
         </fieldset>
     </body>
 </html>
