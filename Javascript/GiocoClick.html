@@ -7,7 +7,11 @@
             }
 
             setInterval(() => {
-                alert(contatore);
+                let contatoreprec=contatore;
+                document.getElementById("result").value=contatore;
+                if (contatoreprec>contatore) {
+                    document.getElementById("result").value=contatoreprec;
+                }
                 contatore=0;
             }, 5000);
         </script>
@@ -15,7 +19,6 @@
     <body>
         <h1>GIOCO DEL CLICK</h1>
         <button onclick="aumenta()" id="bottone"> clicca </button>
-
-
+        <p>Numero click effettuati: </p><input type="text" id="result">
     </body>
 </html>
