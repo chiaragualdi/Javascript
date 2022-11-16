@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            let contatore = 0;
+            const aumenta = () => {
+                contatore+=1;
+            }
+
+            setInterval(() => {
+                alert(contatore);
+                contatore=0;
+            }, 5000);
+        </script>
+    </head>
+    <body>
+        <h1>GIOCO DEL CLICK</h1>
+        <button onclick="aumenta()" id="bottone"> clicca </button>
+
+
+    </body>
+</html>
