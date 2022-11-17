@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script>
+            "use strict";
+            function prova(){
+                //non avessimo usato "use strict", potevamo non dichiarare la variabile con let
+                let n = 9+"1";
+                alert(n);
+                alert(typeof n); //darà "string"
+                //scrive 91 perchè + viene interpretato come concatenzaione di stringhe
+                let n2 = 9-"1";
+                alert(n2);
+                alert(typeof n2); //darà "number"
+                //scrive 8 perchè - viene interpretato come sottrazione algebrica
+            }
+
+            //leggere un tempo in h, min e sec --> convertirlo in sec totali --> far scrivere al monitor il risultato
+            function tempo(){
+                const conversione=60;
+                let h = Number(prompt('ore: ', 1));
+                let min = Number(prompt('min: ', 30));
+                let sec = Number(prompt('sec: ', 30));
+                alert(`Tempo: ${h} ore, ${min} min, ${sec} sec`);
+                let minTot=conversione*h;
+                minTot+=min;
+                let secTot=minTot*conversione;
+                secTot+=sec;
+                alert(secTot);
+            }
+            
+
+        </script>
+    </head>
+    <body>
+        <input type="button" value="prova" onclick="prova();"/>
+        <input type="button" value="tempo" onclick="tempo();"/>
+    </body>
+</html>
