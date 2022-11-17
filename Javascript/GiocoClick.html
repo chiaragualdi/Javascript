@@ -2,23 +2,83 @@
     <head>
         <script>
             let contatore = 0;
-            const aumenta = () => {
-                contatore+=1;
+            let recPrimo = 0;
+            let recSecondo = 0;
+            let recTerzo = 0;
+
+            let tempo = 5;
+
+            function clicca(){
+                contatore++;
+                document.getElementById("Score").innerHTML = "Score: "+c;
+                return contatore;
+            }
+
+            function pulisci(){
+                contatore=0;
+                document.getElementById("Score").innerHTML = "Score: ";
             }
 
             setInterval(() => {
-                let contatoreprec=contatore;
-                document.getElementById("result").value=contatore;
-                if (contatoreprec>contatore) {
-                    document.getElementById("result").value=contatoreprec;
+                while(true){
+                    if(contatore>=recTerzo){
+                        if(contatore>=recSecondo){
+                            if(contatore>=recPrimo){
+                                recTerzo=recSecondo;
+                                recSecondo=recPrimo;
+                                recPrimo=contatore;
+                                document.getElementById("terzo").innerHTML = document.getElementById("secondo").innerHTML;
+                                document.getElementById("secondo").innerHTML = document.getElementById("primo").innerHTML;
+                                document.getElementById("primo").innerHTML = varPrimo+" - "+document.getElementById("nome").value+" "+document.getElementById("cognome").value;
+                                break;
+                            }
+
+                            recTerzo=recSecondo;
+                            recSecondo=contatore;
+                            document.getElementById("terzo").innerHTML = document.getElementById("secondo").innerHTML;
+                            document.getElementById("secondo").innerHTML = recSecondo+" - "+document.getElementById("nome").value+" "+document.getElementById("cognome").value;
+                            break;
+                        }
+                        
+                        recTerzo=contatore;
+                        document.getElementById("terzo").innerHTML = recTerzo+" - "+document.getElementById("nome").value+" "+document.getElementById("cognome").value;
+                        break;
+                    }
+                    break;
                 }
-                contatore=0;
-            }, 5000);
+                pulisci();
+            }, 5000)
+
+            setInterval(() => {
+                tempo--;
+                if (tempo==0){
+                    tempo=5;
+                }
+                document.getElementById("Secondi").innerHTML = "Mancano "+tempo+" secondi.";
+            }, 1000)
+
         </script>
     </head>
+
     <body>
-        <h1>GIOCO DEL CLICK</h1>
-        <button onclick="aumenta()" id="bottone"> clicca </button>
-        <p>Numero click effettuati: </p><input type="text" id="result">
+        <h1>IL GIOCO DEL CLICK</h1>
+
+        <input type="text" id="nome" placeholder="Nome">
+        <br><br>
+        <input type="text" id="cognome" placeholder="Cognome">
+        <br><br>
+        <input type="button" value="CLICK" onclick="clicca();">
+
+        <p id="Secondi">Mancano 5 secondi</p>
+        <p id="Score">Numero click effettuati: </p>
+        
+        <p>Classifica record: </p>
+
+        <ol>
+            <li id="primo"></li>
+            <li id="secondo"></li>
+            <li id="terzo"></li>
+        </ol>
+        
     </body>
 </html>
