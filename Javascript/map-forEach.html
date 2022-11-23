@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            const lista = [4, 5, 6, 7];
+            const lista2 = lista.map((e, i) => {
+                if (e%2==0){
+                    return e+1;
+                    //return e++; => restituisce e, poi lo incrementa di uno
+                }
+                else {
+                    return e-1;
+                }
+            })
+
+            lista2.forEach((e, i) => {
+                alert("Elemento "+ i +" = "+ e);
+            })
+            lista.forEach((e, i) => {
+                alert("Elemento "+ i +" = "+ e);
+            })
+        </script>
+    </head>
+</html>
