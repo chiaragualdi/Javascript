@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script>
+        const arr = [2, 4, 6, 7, 2, 100];
+        const filtered = arr.filter((e, i) => {
+            if(e > i){return e} 
+            //crea un nuovo array filtrato in base a una condizione data 
+        })
+
+        alert(
+            //acc = accumulatore
+            filtered.reduce((acc, e) => {
+            if(e > acc){acc = e}
+            return acc;
+            })
+      );
+
+      
+    </script>
+  </head>
+
+
+</html>

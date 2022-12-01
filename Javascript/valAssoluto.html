@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script>
+        "use strict";
+        const valAss = (x) => {
+            if (x<0){
+                return -x;
+            }
+            else{
+                return x;
+            }
+        }
+        function Calcola(){
+            let x=prompt("Inserisci il numero: ");
+            alert(valAss(x));
+        }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="run" onclick="Calcola();">
+  </body>
+</html>

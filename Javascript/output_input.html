@@ -1,0 +1,33 @@
+<HTML>
+    <HEAD>
+        <SCRIPT>
+			"use strict"
+            function prova(){
+			
+				// leggere un tempo in ore, minuti, secondi
+				// convertirlo in secondi totali
+				// scrivere a monitor il risultato
+				const FATT_CONV = 60;
+				let ore = Number(prompt("Quante ore ?"));
+				let minuti = Number(prompt("Quanti minuti ?"));
+				let secondi = Number(prompt("Quanti secondi ?"));
+				let secondiTotali = ore*FATT_CONV*FATT_CONV;
+				secondiTotali = secondiTotali + minuti*FATT_CONV;
+				secondiTotali = secondiTotali + secondi;
+				alert("secondi totali: " + secondiTotali);
+				
+				let risposta = confirm("Ti è piaciuto questo programma ?");
+				if (risposta)
+					alert("ottimo")
+				else
+					alert("mi spiace !")
+				
+			}
+        </SCRIPT>
+    </HEAD>
+
+    <BODY>
+        <INPUT type = "BUTTON" VALUE = "run" onclick = "prova();" />
+    </BODY>
+
+</HTML>
