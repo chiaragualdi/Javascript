@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            let num;
+            let somma=0;
+            do{
+                num=Number(prompt("Inserisci numero: "));
+            } while(num<0);
+            for (n=0;n<=num;n++){
+                somma+=n;
+            }
+            alert(somma);
+            let nGauss=num*(++num)/2;
+            alert(nGauss);
+            if (somma==nGauss){
+                alert("Legge di Gauss verificata!");
+            }
+            else{
+                alert("Legge di Gauss NON verificata!");
+            }
+        </script>
+    </head>
+</html>
