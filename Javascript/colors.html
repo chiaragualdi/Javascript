@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+            const changecolor = () => {
+                const titolo=document.getElementById("title");
+                if (titolo.style.color==""){
+                        titolo.style.color="red";
+                    }
+                else if (titolo.style.color=="red"){
+                        titolo.style.color="blue";
+                    }
+                else if (titolo.style.color=="blue"){
+                        titolo.style.color="cyan";
+                    }
+                else if (titolo.style.color=="cyan"){
+                        titolo.style.color="black";
+                    }
+                else if (titolo.style.color=="black"){
+                        titolo.style.color="red";
+                    }
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="title" >TITOLO</h1>
+        <button onclick="changecolor();">CAMBIA COLORE</button>
+    </body>
+</html>
