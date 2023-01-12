@@ -19,10 +19,20 @@
                         titolo.style.color="red";
                     }
             }
+            const lista=["black", "red", "blue", "cyan"];
+            const changecolor2 = () => {
+                const titolo=document.getElementById("title");
+                let colore=titolo.style.color;
+                if (colore==""){colore="black"}
+                let indice=lista.indexOf(colore);
+                if (indice==3){indice=-1}
+                titolo.style.color=lista[++indice];
+                colore=titolo.style.color;
+            }
         </script>
     </head>
     <body>
         <h1 id="title" >TITOLO</h1>
-        <button onclick="changecolor();">CAMBIA COLORE</button>
+        <button onclick="changecolor2();">CAMBIA COLORE</button>
     </body>
 </html>
