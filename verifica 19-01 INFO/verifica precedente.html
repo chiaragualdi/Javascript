@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <script>
+
+      const DIM = 10
+      var elementiInseriti= 0;
+      var nomi_lc = new Array();
+      var citta_lc = new Array();
+      var posti_lc = new Array();
+
+      for (var i=0; i < DIM; i++){
+					nomi_lc[i] = 0;
+          citta_lc[i] = 0;
+          posti_lc[i] = 0;
+				}
+
+      function print_stadi(){
+        document.getElementById("textArea").value = ""
+        for (var i=0; i< elementiInseriti; i++){
+        document.getElementById("textArea").value += 
+        nomi_lc[i] +" "+  citta_lc[i] + " " + posti_lc[i] + "\n"
+        }
+
+      }
+
+      function memorizza(){
+        nomi_lc[elementiInseriti] = document.getElementById("nome").value
+        citta_lc[elementiInseriti] = document.getElementById("citta").value
+        posti_lc[elementiInseriti] = document.getElementById("numero").value
+        elementiInseriti++
+        print_stadi();
+      }
+
+      function modifica(){
+        var richiesta_nome_lc = prompt("Nome dello stadio");
+        var indice = nomi_lc.indexOf(richiesta_nome_lc);
+        nomi_lc[indice] = document.getElementById("nome").value
+        citta_lc[indice] = document.getElementById("citta").value
+        posti_lc[indice] = document.getElementById("numero").value
+        print_stadi();
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <form>
+
+      <h1>GESTIONE STADI</h1><br>
+
+      <fieldset><legend>Dati</legend>
+        nome stadio: <input type = "text" id = "nome"/>  <br><br>
+        citta': <input type = "text" id = "citta"/>  <br><br>
+        numero di posti: <input type = "number"  id = "numero"/>  <br><br>
+        anello di atletica: 
+        <input type = "radio" name = "bottone" value = "Si"/> SI
+        <input type = "radio" name = "bottone" value = "No"/> NO
+      </fieldset>
+
+      <br><br>
+      <input type = "button" value = "INSERISCI"
+      onclick = "memorizza();"/>
+      <input type = "button" value = "MODIFICA"
+      onclick = "modifica();"/>
+      <input type = "button" value = "ORDINA PER NOME"/>
+      <br><br>
+
+      Elenco stadi: <br> <textarea name = "areaStadi" id = "textArea" disabled = "true"></textarea> <br>
+
+    </form>
+  </body>
+
+</html>

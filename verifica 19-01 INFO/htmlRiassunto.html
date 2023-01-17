@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <script>
+            //CALCOLA MEDIA
+            var TotValori=0;
+            var Somma=0;
+            function AggiungiValore(){
+                TotValori++;
+                var Valore=Number(document.getElementById("valore").value);
+                Somma=Somma+Valore;
+                document.getElementById("contatore").value=TotValori;
+                document.getElementById("valore").value="";
+            }
+            function CalcolaMedia(){
+                var Media;
+                Media=Somma/TotValori;
+                //Per ottenere un intero: Media=Math.round(Somma/TotValori);
+                alert("La media dei valori è "+Media);
+            }
+
+            //leggere un TEMPO in h, min e sec --> convertirlo in sec totali --> far scrivere al monitor il risultato
+            function tempo(){
+                const conversione=60;
+                let h = Number(prompt('ore: ', 1));
+                let min = Number(prompt('min: ', 30));
+                let sec = Number(prompt('sec: ', 30));
+                alert(`Tempo: ${h} ore, ${min} min, ${sec} sec`);
+                let minTot=conversione*h;
+                minTot+=min;
+                let secTot=minTot*conversione;
+                secTot+=sec;
+                alert(secTot);
+            }
+
+            //CONVERSIONE $-EURO
+            function DollaroEuro(){
+                const Conversione=1.03;
+                var importoDollaro;
+                importoDollaro = Number(document.getElementById("txtDollari").value);
+                var importoEuro=Conversione*importoDollaro;
+                alert(importoEuro);
+                document.getElementById("txtEuro").value = importoEuro;
+            }
+            function EuroDollaro(){
+                const Conversione = 1.03;
+                var importoDollaro;
+                var importoEuro;
+                importoEuro = document.getElementById("txtEuro").value;
+                importoDollaro = importoEuro/Conversione;
+                document.getElementById("txtDollari").value = importoDollaro;
+            }
+
+            //CAMBIA COLORE
+            const changecolor = () => {
+                const titolo=document.getElementById("title");
+                if (titolo.style.color==""){
+                        titolo.style.color="red";
+                    }
+                else if (titolo.style.color=="red"){
+                        titolo.style.color="blue";
+                    }
+                else if (titolo.style.color=="blue"){
+                        titolo.style.color="cyan";
+                    }
+                else if (titolo.style.color=="cyan"){
+                        titolo.style.color="black";
+                    }
+                else if (titolo.style.color=="black"){
+                        titolo.style.color="red";
+                    }
+            }
+            const lista=["black", "red", "blue", "cyan"];
+            const changecolor2 = () => {
+                const titolo=document.getElementById("title");
+                let colore=titolo.style.color;
+                if (colore==""){colore="black"}
+                let indice=lista.indexOf(colore);
+                if (indice==3){indice=-1}
+                titolo.style.color=lista[++indice];
+                colore=titolo.style.color;
+            }
+
+            //VALOE ASSOLUTO
+            const valAss = (x) => {
+            if (x<0){
+                return -x;
+            }
+            else{
+                return x;
+            }
+            }
+            function Calcola(){
+                let x= +prompt("Inserisci il numero: "); //il "+" forza a valore numerico ciò che segue
+                alert(valAss(x));
+            }
+        </script>
+    </head>
+    <body>
+        <h1>CALCOLA MEDIA DEI VALORI</h1>
+        Valore: <input type="text" id="valore" placeholder="Inserisci il valore..."/><br/><br/>
+        Numero valori inseriti: <input type="txt" disabled="true" id="contatore"/>
+        <br/><br/>
+        <input type="button" value="AGGIUNGI VALORE" onclick="AggiungiValore();"/>
+        <input type="button" value="CALCOLA MEDIA" onclick="CalcolaMedia();"/>
+
+        <br>
+        <br>
+
+        <input type="button" value="tempo" onclick="tempo();"/>
+
+        <br>
+        <br>
+
+        
+        <fieldset><legend>CONVERTITORE DI VALUTA</legend><br/>
+            Dollari($):<input type="number" id="txtDollari"/>
+            Euro(€):<input type="number" id="txtEuro"/>
+            <br/><br/>
+            <input type="button" value="Da dollari($) a euro(€)" onclick="DollaroEuro();"/>
+            <input type="button" value="Da euro(€) a dollari($)" onclick="EuroDollaro();"/>
+            </fieldset>
+            
+            <br>
+            <br>
+
+
+            <h1 id="title" >TITOLO</h1>
+            <button onclick="changecolor2();">CAMBIA COLORE</button>
+
+            <br>
+            <br>
+
+
+            <input type="button" value="Calcola valore assoluto" onclick="Calcola();">
+    </body>
+</html>
