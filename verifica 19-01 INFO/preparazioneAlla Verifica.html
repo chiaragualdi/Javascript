@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <script>
+
+      //const DIM = 10
+      let elementiInseriti= 0;
+      let username_lista = new Array();
+      let password_lista = new Array();
+/*
+      for (var i=0; i < DIM; i++){
+                    username_cg[i] = "";
+                    password_cg[i] = "";
+                }
+*/
+      const memorizza=()=>{
+        utente =  document.getElementById("username").value;
+        key = document.getElementById("pw").value;
+
+        if (username_lista.includes(utente)){alert("Utente gia' registrato")}
+        else {
+          username_lista.push(document.getElementById("username").value);
+          password_lista.push(document.getElementById("pw").value);
+          alert("Signup effettuato con successo");
+        }
+        /*
+        username_cg[elementiInseriti] = document.getElementById("username").value
+        password_cg[elementiInseriti] = document.getElementById("pw").value
+        elementiInseriti++
+        */
+
+        /*
+        let testo="";
+        for(let i=0; i<elementiInseriti; i++){
+            testo=testo+username_cg[i]+" "+password_cg[i]+"; ";
+        }
+       alert(testo);
+       */
+      }
+
+      const login=()=>{
+        utente=document.getElementById("username").value;
+        key=document.getElementById("pw").value;
+        if (username_lista.includes(utente)){
+          let indice = username_lista.indexOf(utente);
+
+          if (password_lista[indice] == key){
+            alert("Login eseguito con successo");
+          }
+          else {alert("Password errata")}
+        }
+        else {alert("Login fallito")}
+      }
+
+      const reset=()=>{
+        username_lista= new Array();
+        password_lista= new Array();
+      }
+    </script>
+  </head>
+
+  <body>
+    <form>
+
+      <h1>PREPARAZIONE ALLA VERIFICA</h1><br>
+        Username: <input type = "text" id = "username"/>  <br><br>
+        Password: <input type = "text" id = "pw"/>  <br><br>
+      <input type = "button" value = "SIGNUP" onclick = "memorizza();"/>
+      <input type = "button" value = "LOGIN" onclick = "login();"/>
+      <input type = "button" value = "RESET" onclick = "reset();"/>
+      <br><br>
+    </form>
+  </body>
+
+</html>

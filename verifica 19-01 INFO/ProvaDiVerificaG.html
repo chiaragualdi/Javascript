@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <script>
+            
+            let usernames = [];
+            let passwords = [];
+            let registrati = [];
+            let accesso = true;
+            let accesso2 = true;
+            let accesso3 = true;
+            let c=0;
+            
+
+            function addZero(i) {
+                if (i < 10) {i = "0" + i}
+                return i;
+            }
+
+            function orario(){
+                const d = new Date();
+                let h = addZero(d.getHours());
+                let m = addZero(d.getMinutes());
+                let s = addZero(d.getSeconds());
+                let time = h + ":" + m + ":" + s;
+                return time;
+            }
+
+            function signup(){
+                username = document.getElementById("username").value;
+                password = document.getElementById("password").value;
+
+                
+                for(let i in usernames){
+                    if(username==usernames[i]){
+                        alert("Username già registrato, cambiare username o fare login.");
+                        accesso = false;
+                    }
+                }
+
+                if (accesso){
+                    usernames.push(username);
+                    passwords.push(password);
+                    alert("Utente registrato con successo.");
+
+                    const item = `
+                    <li>
+                        <span id="span_${c}">Username: ${username}; Ultimo accesso: Nessun accesso effettuato (fare il login)</span>
+                    </li>
+                    `
+                    document.getElementById("lista").innerHTML += item;
+                    registrati.push(username);
+                    c++;
+                }
+
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+                accesso = true;
+            } 
+            
+            function login(){
+                username = document.getElementById("username").value;
+                password = document.getElementById("password").value;
+
+                for(let i = 0; i<usernames.length; i++){
+                    if (accesso2){
+                        if (username == usernames[i]){
+                            if (password == passwords[i]){
+                                alert("Login effettuato con successo!")
+
+                                for (let k = 0; k<registrati.length; k++){
+                                    if (username == registrati[k]){
+                                        document.getElementById(`span_${k}`).innerHTML = `Username: ${username}; Ultimo accesso: ${orario()}`
+                                    }
+                                }
+                                
+                                document.getElementById("username").value = "";
+                                document.getElementById("password").value = "";
+                                accesso2 = false;
+                            } else {
+                                alert("Password errata, riprovare.");
+                                document.getElementById("password").value = "";
+                                accesso2 = false;
+                            }
+                            
+                        }
+                    }
+                    
+                }
+
+                if (accesso2){
+                    alert("Username non trovato, fare il sign up oppure cambiare utente.")
+                    document.getElementById("username").value = "";
+                    document.getElementById("password").value = "";
+                } else {
+                    accesso2 = true;
+                }
+
+                
+            }
+
+            function reset(){
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+
+                conferma = confirm("Vuoi cancellare tutti i dati e gli utenti registrati?");
+
+                if(conferma){
+                    usernames = [];
+                    passwords = [];
+                    document.getElementById("lista").innerHTML = "";
+                }
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <h1>prove10.html</h1>
+
+        Username: <input type="text" id="username">
+        <br><br>
+        Password: <input type="password" id="password">
+        <br><br>
+
+        <input type="button" id="signup" value="SIGN UP" onclick="signup();">
+        <input type="button" id="login" value="LOGIN" onclick="login();">
+        <input type="button" id="reset" value="RESET" onclick="reset();">
+
+        <ul id="lista"></ul>
+    </body>
+</html>
