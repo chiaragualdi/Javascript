@@ -1,0 +1,97 @@
+
+<html>
+  <head>
+    <script>
+      const treni = [
+    {stazionePartenza: 'Reggio Emilia', stazioneArrivo: 'Bologna', durataViaggioMin: 40},
+    {stazionePartenza: 'Modena', stazioneArrivo: 'Ancona', durataViaggioMin: 145},
+    {stazionePartenza: 'Reggio Emilia', stazioneArrivo: 'Rimini', durataViaggioMin: 110},
+    {stazionePartenza: 'Parma', stazioneArrivo: 'Rimini', durataViaggioMin: 125},
+    {stazionePartenza: 'Reggio Emilia', stazioneArrivo: 'Ancona', durataViaggioMin: 160},
+    {stazionePartenza: 'Parma', stazioneArrivo: 'Bologna', durataViaggioMin: 50},
+    {stazionePartenza: 'Modena', stazioneArrivo: 'Rimini', durataViaggioMin: 105},
+    {stazionePartenza: 'Reggio Emilia', stazioneArrivo: 'Rimini', durataViaggioMin: 110},
+    {stazionePartenza: 'Modena', stazioneArrivo: 'Bologna', durataViaggioMin: 20},
+    {stazionePartenza: 'Parma', stazioneArrivo: 'Bologna', durataViaggioMin: 50},
+    {stazionePartenza: 'Modena', stazioneArrivo: 'Rimini', durataViaggioMin: 105},
+    {stazionePartenza: 'Parma', stazioneArrivo: 'Bologna', durataViaggioMin: 50}
+  ]
+
+  const visualizza = () => {
+    const tabella = document.getElementById('tabella')
+    let ctx = `<tr><th>Partenza</th><th>arrivo</th><th>minuti</th></tr>`
+    treni.forEach((e) => {
+      ctx += `<tr><td>${e.stazionePartenza}</td><td>${e.stazioneArrivo}</td><td>${e.durataViaggioMin}</td></tr>`
+    })
+    tabella.innerHTML = ctx
+  } 
+
+  const durataViaggioMin = () => {
+    const durata = []
+    treni.forEach((e) => {
+      durata.push(e.durataViaggioMin)
+    })
+    const min = Math.min(...durata)
+    const minIndex = durata.indexOf(min)
+    alert(`Il treno più veloce è quello che parte da ${treni[minIndex].stazionePartenza} e arriva a ${treni[minIndex].stazioneArrivo} in ${min} minuti`)
+  }
+
+  const scambiaDati = () => {
+    const durata = []
+    treni.forEach((e) => {
+      durata.push(e.durataViaggioMin)
+    })
+    const max = Math.max(...durata)
+    const maxIndex = durata.indexOf(max)
+    const temp = treni[treni.length - 1]
+    treni[treni.length - 1] = treni[maxIndex]
+    treni[maxIndex] = temp
+    visualizza()
+  }
+
+  const elencoStazioni = () => {
+    const stazioni = []
+    treni.forEach((e) => {
+      if (!stazioni.includes(e.stazionePartenza)) {
+        stazioni.push(e.stazionePartenza)
+      }
+    })
+    alert(stazioni)
+  }
+    </script>
+
+    <style>
+            #tabella {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        #tabella td, #tabella th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        #tabella tr:nth-child(even){background-color: #f2f2f2;}
+
+        #tabella tr:hover {background-color: #ddd;}
+
+        #tabella th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04AA6D;
+          color: white;
+        }
+    </style>
+
+  </head>
+  <body>
+    <h1>Orario treni</h1>
+    <button onclick="visualizza()">visualizza</button>
+    <button onclick="durataViaggioMin()">percorso durata min</button>
+    <button onclick="elencoStazioni()">Elenco staz. partenza</button>
+    <button onclick="scambiaDati()">scambia dati</button>
+    <table id="tabella"></table>
+  </body>
+</html>

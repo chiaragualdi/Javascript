@@ -1,0 +1,85 @@
+
+<html>
+<head>
+    <script>
+        const prenotazioni = []
+
+        const inserisci = () =>{
+        const name = document.getElementById("name").value
+        const surname = document.getElementById("surname").value
+        const plate = document.getElementById("plate").value
+        const seat = document.getElementById("seat").value
+        if (name === "" || surname === "" || plate === "" || seat === "") {
+            alert("Inserisci tutti i dati")
+            return
+        }
+        prenotazioni.push({name, surname, plate, seat})
+        document.getElementById("name").value = ""
+        document.getElementById("surname").value = ""
+        document.getElementById("plate").value = ""
+        document.getElementById("seat").value = ""
+        visualizza()
+        }
+
+        const visualizza = () => {
+        const table = document.getElementById("tabella")
+        let ctx = "<tr><th>Nome</th><th>Cognome</th><th>Targa</th><th>Posto</th><th></th></tr>"
+        prenotazioni.forEach((e, i) => {
+        ctx += `<tr><td>${e.name}</td><td>${e.surname}</td><td>${e.plate}</td><td>${e.seat}</td><td><button onclick="modifica(${i})"><img src="./img/edit.png" alt="edit icon" height="35px"></button></td></tr>`
+        })
+        table.innerHTML = ctx
+        }
+
+        const modifica = (i) => {
+        const name = prompt(`Nome: ${prenotazioni[i].name}`, prenotazioni[i].name)
+        const surname = prompt(`Cognome: ${prenotazioni[i].surname}`, prenotazioni[i].surname)
+        const plate = prompt(`Targa: ${prenotazioni[i].plate}`, prenotazioni[i].plate)
+        const seat = prompt(`Posto: ${prenotazioni[i].seat}`, prenotazioni[i].seat)
+        if(name === null || surname === null || plate === null || seat === null) {
+            alert("Modifica annullata")
+            return
+        }
+        prenotazioni[i] = {name, surname, plate, seat}
+        visualizza()
+        }
+    </script>
+  <style>
+            #tabella {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        #tabella td, #tabella th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        }
+
+        #tabella tr:nth-child(even){background-color: #f2f2f2;}
+
+        #tabella tr:hover {background-color: #ddd;}
+
+        #tabella th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+        }
+  </style>
+
+
+</head>
+<body>
+  <h1>Compagnia di navigazione</h1> 
+  <fieldset><legend>Dati prenotazioni</legend>
+    nome: <input type="text" id="name">
+    cognome: <input type="text" id="surname"> <br> <br>
+    targa: <input type="text" id="plate">
+    posto: <input type="text" id="seat"> <br> <br>
+  </fieldset>
+  <button onclick="visualizza()">visualizza</button>
+  <button onclick="inserisci()">inserisci</button>
+  <table id="tabella"></table>
+</body>
+</html>

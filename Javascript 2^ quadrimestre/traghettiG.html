@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <script>
+            let informazioni = {
+                nomi: [],
+                cognomi: [],
+                targhe: [],
+                codici: []
+            }
+
+            let nome, cognome, targa, codice;
+            let c=0;
+
+            function inserisci(){
+                nome = document.getElementById("nome").value;
+                cognome = document.getElementById("cognome").value;
+                targa = document.getElementById("targa").value;
+                codice = document.getElementById("codice").value;
+
+                informazioni.nomi.push(nome);
+                informazioni.cognomi.push(cognome);
+                informazioni.targhe.push(targa);
+                informazioni.codici.push(codice);
+
+                pulisci();
+            }
+
+            function visualizza(){
+                const item = `
+                <tr>
+                    <td>${informazioni.nomi[c]}</td>
+                    <td>${informazioni.cognomi[c]}</td>
+                    <td>${informazioni.targhe[c]}</td>
+                    <td>${informazioni.codici[c]}</td>
+                </tr> 
+                `
+                
+                document.getElementById("tabella").innerHTML += item;
+                c++;
+            }
+            
+            function pulisci(){
+                document.getElementById("nome").value = "";
+                document.getElementById("cognome").value = "";
+                document.getElementById("targa").value = "";
+                document.getElementById("codice").value = "";
+            }
+        </script>
+
+        <style>
+            table, td, th {
+                border: 1px solid rgb(0, 0, 0); 
+            }       
+        </style>
+    </head>
+
+    <body>
+        <h1>Compagnia di navigazione</h1>
+
+        <fieldset><legend align="left">Dati</legend>
+            nome: <input type="text" id="nome"> cognome: <input type="text" id="cognome">
+            <br><br>
+            targa: <input type="text" id="targa"> codice posto: <input type="text" id="codice">
+            <br><br>
+
+            <!-- area dati: <br> <textarea id="area" disabled="true"></textarea> -->
+
+            <table id="tabella">
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Targa</th>
+                    <th>Codice</th>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+        <input type="button" id="visualizza" value="VISUALIZZA" onclick="visualizza();">
+        <input type="button" id="inserisci" value="INSERISCI" onclick="inserisci();">
+    </body>
+</html>

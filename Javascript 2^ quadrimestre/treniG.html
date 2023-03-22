@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script>
+            const DIM = 12;
+            let v;
+
+            let stazionePartenza=["Reggio Emilia","Modena", "Reggio Emilia", "Parma", "Parma", "Modena", "Reggio Emilia", "Modena", "Parma", "Modena", "Reggio Emilia", "Parma" ];
+            let stazioneArrivo=["Bologna","Ancona", "Rimini", "Rimini", "Bologna", "Rimini", "Rimini", "Bologna", "Bologna", "Rimini", "Ancona", "Bologna"];
+            let durataViaggioMin = [40, 145, 110, 125, 50, 105, 110, 20, 50, 105, 160, 50];
+            
+            let stazionePartenzaDistinti = [];
+
+            function visualizzaDati(){
+                document.getElementById("elencoDati").value = "partenza - arrivo - durata\n";
+
+                for(let i=0; i<DIM; i++){
+                    document.getElementById("elencoDati").value += stazionePartenza[i]+" "+stazioneArrivo[i]+" "+durataViaggioMin[i]+"\n";
+                }
+            }
+
+            function durataMin(){
+                let t_breve = Math.min.apply(null, durataViaggioMin);
+
+                for(let i=0; i<DIM; i++){
+                    if(durataViaggioMin[i]==t_breve){
+                        alert("La tratta con durata più breve è: "+stazionePartenza[i]+"-"+stazioneArrivo[i]+" e dura "+durataViaggioMin[i]+" minuti.")
+                    }
+                }
+            }
+
+            function scambiaDati(){
+                let t_max = Math.max.apply(null, durataViaggioMin);
+
+                for(let i=0; i<DIM; i++){
+                    if(durataViaggioMin[i]==t_max){
+
+                        v=stazionePartenza[i];
+                        stazionePartenza.splice(i, 1);
+                        stazionePartenza.push(v);
+
+                        v=stazioneArrivo[i];
+                        stazioneArrivo.splice(i, 1);
+                        stazioneArrivo.push(v);
+
+                        v=durataViaggioMin[i];
+                        durataViaggioMin.splice(i, 1);
+                        durataViaggioMin.push(v);
+                        
+                        visualizzaDati();
+                    }
+                }
+            }
+
+            function elencoStazPartenza(){
+                for(let i=0; i<DIM; i++){
+                    if(stazionePartenzaDistinti.includes(stazionePartenza[i]) == false){
+                        stazionePartenzaDistinti.push(stazionePartenza[i]);
+                    }
+                }
+                
+                alert(stazionePartenzaDistinti);
+            }
+        </script>
+    </head>
+
+    <body>
+        ORARIO TRENI <br><textarea id="elencoDati"></textarea>
+        <br><br>
+
+        <input type="button" id="BvisualizzaDati" value="VISUALIZZA DATI" onclick="visualizzaDati();">
+        <input type="button" id="BpercorsoDurataMin" value="PERCORSO DURATA MIN" onclick="durataMin();">
+        <input type="button" id="BscambiaDati" value="SCAMBIA DATI" onclick="scambiaDati();">
+        <input type="button" id="BelencoStazPartenza" value="ELENCO STAZ. PARTENZA" onclick="elencoStazPartenza();">
+    </body>
+</html>

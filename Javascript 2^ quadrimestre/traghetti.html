@@ -1,0 +1,77 @@
+<HTML>
+
+	<HEAD>
+		
+		<SCRIPT>
+		
+			let prenotazioni = [];
+			
+			function inserisci(){
+			
+				//lettura valori delle caselle di testo
+				let vNome = document.getElementById("txtNome").value;
+				let vCognome = document.getElementById("txtCognome").value;
+				let vTarga = document.getElementById("txtTarga").value;
+				let vPosto = document.getElementById("txtPosto").value;
+				//inserimento valori in oggetto JS
+				let datiPrenotazione = {"nome":vNome, "cognome":vCognome, 
+				        "targa":vTarga, "posto":vPosto};
+				//caricamento dati in array prenotazioni
+				prenotazioni.push(datiPrenotazione);
+				
+				alert("prenotazione inserita con successo");
+				
+				//pulizia caselle di input
+				document.getElementById("txtNome").value = "";
+				document.getElementById("txtCognome").value = "";
+				document.getElementById("txtTarga").value = "";
+				document.getElementById("txtPosto").value = "";
+				
+			}
+			
+			function visualizza(){
+			
+				let strRiga = "<TR><TH>NOME</TH>";
+				strRiga += "<TH>COGNOME</TH>";
+				strRiga += "<TH>TARGA</TH>";
+				strRiga += "<TH>CODICE POSTO</TH></TR>"
+			
+				t = document.getElementById("tblVisualizza");
+				t.innerHTML = ""; //pulisci tabella
+				t.innerHTML = strRiga;
+				
+				for (let i=0; i < prenotazioni.length; i++){
+					strRiga = "<TR><TD>"+prenotazioni[i].nome+"</TD>";
+					strRiga += "<TD>"+prenotazioni[i].cognome+"</TD>";
+					strRiga += "<TD>"+prenotazioni[i].targa+"</TD>";
+					strRiga += "<TD>"+prenotazioni[i].posto+"</TD></TR>";	
+					t.innerHTML += strRiga;
+				}
+			
+			}
+			
+		</SCRIPT>
+	</HEAD>
+	<BODY>
+		<H1> Compagnia di navigazione Pigna's Travel </H1>
+		<FIELDSET> <LEGEND> Dati prenotazioni </LEGEND>
+		nome: <INPUT type = "text" id="txtNome" /> 
+		cognome: <INPUT type = "text" id="txtCognome" /> 
+		<BR/><BR/>
+		targa: <INPUT type = "text" id="txtTarga" /> 
+		codice posto: <INPUT type = "text" id="txtPosto" />  
+		<BR/><BR/>
+		
+		posti prenotati: <BR> 
+		<TABLE id = "tblVisualizza" > 
+			
+			
+		</TABLE>
+		</FIELDSET>
+		<BR>
+		<INPUT type = "button" value = "visualizza" onclick = "visualizza();"		/>
+		<INPUT type = "button" value = "inserisci" onclick = "inserisci();" />
+	</BODY>
+
+
+</HTML>
