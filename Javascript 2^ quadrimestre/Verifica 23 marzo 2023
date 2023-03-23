@@ -1,0 +1,72 @@
+<html>
+<head>
+    <script>
+        const datiStudente = [];
+        let Esiti = [];
+
+        const inserisciStudente = () =>{
+        const name = document.getElementById("name").value;
+        const surname = document.getElementById("surname").value;
+        if (name === "" || surname === "") {
+            alert("Inserisci tutti i dati")
+            return
+        }
+        datiStudente.push({name, surname})
+        document.getElementById("name").value = "";
+        document.getElementById("surname").value = "";
+        visualizza();
+        }
+
+        const visualizza = () => {
+        const table = document.getElementById("tabella");
+        let ctx = "<tr><th>Nome</th><th>Cognome</th></tr>";
+        datiStudente.forEach((e) => {
+        ctx += `<tr><td>${e.name}</td><td>${e.surname}</td></tr>`
+        })
+        table.innerHTML = ctx;
+        }
+
+        const inserisciEsame = () =>{
+            let dataEsame = prompt(`Inserisci data esame: `);
+            let esame = prompt(`Inserisci nome esame: `);
+            let voto = prompt(`Inseirsci voto:`);
+            let durata = prompt(`Inserisci durata (A o S)`);
+            /*
+            while (true){
+                if (durata!="A"||durata!="s"){
+                    let durata = prompt(`Inserisci correttamente durata (A o S)`);
+                    return true;
+                }
+                if (durata=="A" || durata=="S"){
+                    return false;
+                }
+                
+            }*/
+            let datiEsame = {"Data":dataEsame, "Nome":esame, 
+				        "Voto":voto, "Durata":durata};
+			Esiti.push(datiEsame);
+            visualizzaEsame();
+        }
+
+        const visualizzaEsame = () => {
+        const table2 = document.getElementById("tabella2");
+        let ctx = "<tr><th>Data</th><th>Esame</th><th>Voto</th><th>Durata</th></tr>";
+        Esiti.forEach((e, i) => {
+        ctx += `<tr><td>${e.Data}</td><td>${e.Nome}</td><td>${e.Voto}</td><td>${e.Durata}</td></tr>`
+        })
+        table2.innerHTML = ctx;
+        }
+    </script>
+    <style>
+            
+    </style>
+</head>
+<body>
+    nome: <input type="text" id="name">
+    cognome: <input type="text" id="surname"> <br> <br>
+    <button onclick="inserisciStudente()">inserisci dati studente</button><br> <br>
+    <button onclick="inserisciEsame()">inserisci esito esame</button> <br> <br>
+    <table id="tabella"></table>
+    <table id="tabella2"></table>
+</body>
+</html>
